@@ -14,7 +14,7 @@
             }
         </style>
     </head>
-<body>
+    <body>
 
 <?php
 $redirect_uri = "http://localhost/agiliq";
@@ -45,3 +45,5 @@ else {
     <?                          
 }
 ?>
+    </body>
+</html>
