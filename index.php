@@ -1,3 +1,21 @@
+<!doctype html>
+<html>
+    <head>
+        <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+        <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
+        <style>
+            body{
+                background : #f5f5f5; 
+            }
+            #form{
+                position : relative;
+                left : 500px;
+       
+            }
+        </style>
+    </head>
+<body>
+
 <?php
 $redirect_uri = "http://localhost/agiliq";
 $client_id= "mvsI4Cal5z20rAfco0nFXsoIKQPgGayGYZi580OTNeZsBZS198";
@@ -11,14 +29,19 @@ else {
     $json = file_get_contents($jsonurl,0,null,null);
     $json_output = json_decode($json,true);
     $access_token = $json_output['access_token'];
-    echo $access_token;
-    $url = "http://join.agiliq.com/api/resume/upload/?access_token=$access_token&first_name=Bharath&last_name=Thiruveedula&projects_url=https://github.com/bharaththiruveedula&code_url="
-    ?>
-        <form action=<?php echo $url; ?> method="post" enctype="multipart/form-data">
-        <label for="file">Filename:</label>
-        <input type="file" name="file" id="file"><br>
-        <input type="submit" name="submit" value="Submit">
-    </form>
+    $url = "http://join.agiliq.com/api/resume/upload/?access_token=$access_token";
+    ?>  <div id="form">
+            <h2> Agiliq Form</h2>
+            <form action=<?php echo $url;?> method="post" enctype="multipart/form-data">
+                <label for="resume">Filename:</label>
+                <input type="file" name="resume" id="resume">
+                <label for="first_name">First Name</label><input type="text" id="first_name" name="first_name" value="Bharath">
+                <label for="last_name">Last Name:</label><input type="text" id="last_name" name="last_name" value="Thiruveedula">
+                <label for="projects_url">Github URL:</label><input type="text" id="projects_url" name="projects_url" value="https://github.com/bharaththiruveedula" >
+                <label for="code_url">Code URL:</label><input type="text" id="code_url" name="code_url" value="https://github.com/bharaththiruveedula/agiliq_application"><br/>
+                <input type="submit" class="btn-primary">
+            </form>
+        </div>
     <?                          
 }
 ?>
